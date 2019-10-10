@@ -1,0 +1,20 @@
+.Item{
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 5px;
+    position: relative;
+    transition: all .3s;
+}
+.Item:hover{
+    transform: scale(.99);
+    cursor: pointer;
+    transition: all .3s;
+}
+.date{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    color: #ccc;
+}

@@ -1,0 +1,10 @@
+.Orders{
+    padding: 1em;
+}
+h2{
+    color: rgba(0,0,0,.6)
+}
+
+.Search{
+    border: 1px solid #eee !important;
+}

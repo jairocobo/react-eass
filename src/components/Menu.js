@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap'
 
 const Menu = () => {
     return (
-        <nav>
+        <nav className="Menu">
             <div className="Avatar">
    avatar
             </div>
