@@ -8,11 +8,11 @@ const Menu = () => {
     return (
         <nav>
             <div className="Avatar">
-                sdfsdffd
+   avatar
             </div>
             <div className="MenuFast">
-                <Button variant="outline-danger" block>Danger</Button>
-                <Button variant="outline-danger" block>Danger</Button>
+                <Button variant="outline-danger" block>PEDIDOS</Button>
+                <Button variant="outline-danger" block>CLIENTES</Button>
             </div>
             <div className="MenuList">
                 
