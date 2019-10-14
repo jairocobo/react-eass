@@ -8,6 +8,7 @@ import {Row, Col} from 'react-bootstrap'
 
 import '../assets/css/pages/App.css'
 
+
 const App = () => {
   return (
     <Row className="App">
@@ -17,7 +18,7 @@ const App = () => {
       <Col sm={4}>
         <Orders />
       </Col>
-      <Col sm={6}>sm=4</Col>
+      <Col sm={6}>prueba</Col>
     </Row>
   )
 }
