@@ -10,7 +10,7 @@ const Item = (props) => {
         <div className="Item">
             <h4><Badge variant={color}>New</Badge></h4>
             <span className="date">07/08/2020</span>
-            <p>lorem ipiao aisdjklas jlkasdj alksdj aksdj aosidjason oasknda ksnjsd sd jsd</p>
+            <p>lorem ipiao s aisdjklas jlkasdj alksdj aksdj aosidjason oasknda ksnjsd sd jsd</p>
         </div>
     )
 }

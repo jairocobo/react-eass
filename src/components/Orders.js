@@ -6,9 +6,10 @@ import Item from './Item.js'
 
 const Orders = () => {
     return (
-        <div className="Orders">
+        <div className="Tab1 Orders">
             <h2>Pedidos</h2>
             <Form.Control type="email" placeholder="Búscar..." className="Search"/>
+            <div className="Add">Agregar un pedido</div>
             <Item color="primary"/>
             <Item color="success" />
             <Item color="info" />

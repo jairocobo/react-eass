@@ -1,26 +1,20 @@
 import React from 'react'
 
-
 import Menu from '../components/Menu'
-import Orders from '../components/Orders'
 
 import {Row, Col} from 'react-bootstrap'
 
 import '../assets/css/pages/App.css'
 
-
-const App = () => {
+const Layout = ({ children }) => {
   return (
     <Row className="App">
       <Col sm={2} className="Menu">
         <Menu />
       </Col>
-      <Col sm={4}>
-        <Orders />
-      </Col>
-      <Col sm={6}>prueba</Col>
+      { children }
     </Row>
   )
 }
 
-export default App
+export default Layout

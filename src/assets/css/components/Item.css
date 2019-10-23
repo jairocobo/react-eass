@@ -1,7 +1,7 @@
 .Item{
     background: #fff;
     box-shadow: 0 0 3px rgba(0,0,0,.2);
-    padding: 1em;
+    padding: .4em .8em;
     margin: 1em 0;
     border-radius: 5px;
     position: relative;
@@ -12,9 +12,18 @@
     cursor: pointer;
     transition: all .3s;
 }
+.Item p{
+    color: rgba(0,0,0,.7);
+    font-size: 15px;
+}
 .date{
+    font-size: 15px;
     position: absolute;
     top: 1em;
     right: 1em;
     color: #ccc;
+}
+.Item .badge{
+    font-size: 14px !important;
+    font-weight: 500 !important;
 }
