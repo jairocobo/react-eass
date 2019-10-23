@@ -7,6 +7,23 @@
     position: relative;
     transition: all .3s;
 }
+.Item.Client h4{
+    font-size: 17px;
+    margin-bottom: 3px !important;
+}
+.Item.Client p{
+    font-size: 12px;
+    font-size: 12px;
+    color: #86bdf9;
+    margin-bottom: 0;
+}
+.mr-3{
+    border-radius: 40px;
+    width: 35px;
+    padding-top: 1px;
+    height: 36px;
+    margin-right: 11px !important;
+}
 .Item:hover{
     transform: scale(.99);
     cursor: pointer;

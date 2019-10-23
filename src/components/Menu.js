@@ -10,9 +10,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const Menu = () => {
-    const setMenu = (props) => {
-        const item = document.querySelector('.nav-link')
-        item.classList.remove('remove')
+    const setMenu = (id) => {
+        if(id){
+            document.querySelector('.nav-link.active').classList.remove('active')
+            document.querySelector(`.${id}`).classList.add('active')
+        }
     }
     return (
         <nav>
@@ -20,19 +22,19 @@ const Menu = () => {
                 <img src={avatar} alt="Avatar" />
             </div>
             <ul className="nav flex-column MenuSub">
-                <Link to="/" className="nav-link active" onClick={setMenu}>
+                <Link to="/" className="nav-link home" onClick={() => setMenu('home')}>
                     <FontAwesomeIcon icon={faCoffee} /> Inicio
                 </Link>
-                <Link to="/orders" className="nav-link" onClick={setMenu}>
+                <Link to="/orders" className="nav-link orders active" onClick={() => setMenu('orders')}>
                     <FontAwesomeIcon icon={faCoffee} /> Pedidos
                 </Link>
-                <Link to="/clients" className="nav-link" onClick={setMenu}>
+                <Link to="/clients" className="nav-link clients" onClick={() => setMenu('clients')}>
                     <FontAwesomeIcon icon={faCoffee} /> Clientes
                 </Link>
-                <Link to="/motors" className="nav-link" onClick={setMenu}>
+                <Link to="/motors" className="nav-link motors" onClick={() => setMenu('motors')}>
                     <FontAwesomeIcon icon={faCoffee} /> Unidades
                 </Link>
-                <Link to="/finances" className="nav-link" onClick={setMenu}>
+                <Link to="/finances" className="nav-link finances" onClick={() => setMenu('finances')}>
                     <FontAwesomeIcon icon={faCoffee} /> Finanzas
                 </Link>
             </ul>
