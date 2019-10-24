@@ -4,40 +4,45 @@ import '../assets/css/components/Menu.css'
 
 import avatar from '../assets/img/avatar.png'
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { OverlayTrigger,Tooltip } from 'react-bootstrap'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { faNewspaper, faAddressCard, faHandRock, faUser, faChartBar } from '@fortawesome/free-regular-svg-icons'
 
 const Menu = (props) => {
-    console.log(props)
-    const setMenu = (id) => {
-        if(id){
-            document.querySelector('.nav-link.active').classList.remove('active')
-            document.querySelector(`.${id}`).classList.add('active')
-        }
-    }
+
     return (
         <nav>
             <div className="Avatar">
                 <img src={avatar} alt="Avatar" />
             </div>
             <ul className="nav flex-column MenuSub">
-                <Link to="/" className="nav-link home" onClick={() => setMenu('home')}>
-                    <FontAwesomeIcon icon={faTrashAlt} /> Inicio
-                </Link>
-                <Link to="/orders" className="nav-link orders active" onClick={() => setMenu('orders')}>
-                    <FontAwesomeIcon icon={faTrashAlt} /> Pedidos
-                </Link>
-                <Link to="/clients" className="nav-link clients" onClick={() => setMenu('clients')}>
-                    <FontAwesomeIcon icon={faTrashAlt} /> Clientes
-                </Link>
-                <Link to="/motors" className="nav-link motors" onClick={() => setMenu('motors')}>
-                    <FontAwesomeIcon icon={faTrashAlt} /> Unidades
-                </Link>
-                <Link to="/finances" className="nav-link finances" onClick={() => setMenu('finances')}>
-                    <FontAwesomeIcon icon={faTrashAlt} /> Finanzas
-                </Link>
+                <OverlayTrigger placement="top" overlay={<Tooltip>Inicio</Tooltip>}>
+                    <NavLink activeClassName="active" to="/home" className="nav-link">
+                        <FontAwesomeIcon icon={faNewspaper} />
+                    </NavLink>
+                </OverlayTrigger>
+                <OverlayTrigger placement="top" overlay={<Tooltip>Pedidos</Tooltip>}>
+                    <NavLink activeClassName="active" to="/orders" className="nav-link">
+                        <FontAwesomeIcon icon={faAddressCard} />
+                    </NavLink>
+                </OverlayTrigger>
+                <OverlayTrigger placement="top" overlay={<Tooltip>Clientes</Tooltip>}>
+                    <NavLink activeClassName="active" to="/clients" className="nav-link">
+                        <FontAwesomeIcon icon={faUser} />
+                    </NavLink>
+                </OverlayTrigger>
+                <OverlayTrigger placement="top" overlay={<Tooltip>Unidades</Tooltip>}>
+                    <NavLink activeClassName="active" to="/motors" className="nav-link">
+                        <FontAwesomeIcon icon={faHandRock} />
+                    </NavLink>
+                </OverlayTrigger>
+                <OverlayTrigger placement="top" overlay={<Tooltip>Finanzas</Tooltip>}>
+                    <NavLink activeClassName="active" to="/finances" className="nav-link">
+                        <FontAwesomeIcon icon={faChartBar} />
+                    </NavLink>
+                </OverlayTrigger>
             </ul>
         </nav>
     )

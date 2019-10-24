@@ -1,6 +1,7 @@
 {
   "name": "here",
   "version": "0.1.0",
+  "main": "main.js",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
@@ -14,6 +15,7 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
+    "dev": "electron .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -33,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^7.0.0"
   }
 }

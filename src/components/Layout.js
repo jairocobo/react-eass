@@ -9,7 +9,7 @@ import '../assets/css/pages/App.css'
 const Layout = ({ children }) => {
   return (
     <Row className="App">
-      <Col sm={2} className="Menu">
+      <Col sm={1} className="Menu">
         <Menu />
       </Col>
       { children }

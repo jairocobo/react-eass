@@ -7,7 +7,7 @@ import Clients from '../pages/Clients'
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <Layout>

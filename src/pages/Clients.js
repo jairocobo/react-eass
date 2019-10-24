@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
-import { Form, Table, Badge, ButtonGroup, Spinner, Col, Modal, Button } from 'react-bootstrap'
+import { Form, Table, Badge, Spinner, Col, Modal, Button } from 'react-bootstrap'
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { faTrashAlt, faPlusSquare } from '@fortawesome/free-regular-svg-icons'
 
 import '../assets/css/pages/App.css'
 import '../assets/css/components/Item.css'
@@ -13,14 +13,14 @@ import '../assets/css/components/Item.css'
 import image from '../assets/img/clients.png'
 
 const Clients = (props) => {
-    let { id } = useParams();
+    let { id } = useParams()
 
     const [modalShow, setModalShow] = useState(false)
     const [client, setClient] = useState(null)
     const [clients, setClients] = useState(null)
 
-    const openModal = () => setModalShow(true);
-    const closeModal = () => setModalShow(false);
+    const openModal = () => setModalShow(true)
+    const closeModal = () => setModalShow(false)
 
     const toClient = (id) => {
         props.history.push('/clients/'+id)
@@ -40,11 +40,15 @@ const Clients = (props) => {
         })
         .then(res => res.json())
         .then(clients => {
-            setClients(clients)
-            name.vale = ''
-            phone.vale = ''
-            direction.vale = ''
-            setModalShow(false)
+            if(id === 'new'){
+                props.history.push('/orders/new')
+            }else{
+                setClients(clients)
+                name.vale = ''
+                phone.vale = ''
+                direction.vale = ''
+                setModalShow(false)
+            }
         })
     }
 
@@ -90,11 +94,15 @@ const Clients = (props) => {
           setClients(clients)
         })
         if(id){
-            fetch(`http://localhost/api/client/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setClient(data[0])
-            })
+            if(id === 'new'){
+                setModalShow(true)
+            }else{
+                fetch(`http://localhost/api/client/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setClient(data[0])
+                })
+            }
         }
     }, [id])
     return (
@@ -129,7 +137,7 @@ const Clients = (props) => {
             <Col sm={4} className="Tab1">
                 <h2>Clientes</h2>
                 <Form.Control type="text" placeholder="Búscar..." className="Search" onChange={searchClient}/>
-                <div className="Add" onClick={openModal}>Agregar un cliente</div>
+                <div className="Add" onClick={openModal}><FontAwesomeIcon icon={faPlusSquare} /> Agregar un cliente</div>
                 {
                     clients ? (
                         clients.map(client => (
@@ -154,15 +162,12 @@ const Clients = (props) => {
                         <>
                             <h2>{client.name}</h2>
                             <p><strong>Telefono: </strong> {client.phone} <strong>Dirección: </strong> {client.direction}</p>
-                            <ButtonGroup aria-label="Basic example">
-                                <Button variant="outline-danger" onClick={() => deleteClient(client.id)}><FontAwesomeIcon icon={faTrashAlt} /> Eliminar</Button>
-                                <Button variant="outline-secondary">Editar</Button>
-                            </ButtonGroup>
+                               <Button variant="danger" className="buttonTabs2" onClick={() => deleteClient(client.id)}><FontAwesomeIcon icon={faTrashAlt} /> Eliminar</Button>
                             {
                                 client.orders.length > 0 ? (
                                     <>
                                         <h3>Pedidos que ha hecho</h3>
-                                        <Table striped bordered>
+                                        <Table bordered>
                                             <thead>
                                                 <tr>
                                                 <th>#</th>
@@ -176,7 +181,7 @@ const Clients = (props) => {
                                                     client.orders.map((order, index) => (
                                                         <tr key={index}>
                                                             <td>{ parseInt(index) + 1 }</td>
-                                                            <td><Link to={`/order/${order.id}`}>{order.text}</Link></td>
+                                                            <td><Link to={`/orders/${order.id}`}>{order.text.substring(0,40)}</Link></td>
                                                             <td>{order.date}</td>
                                                             <td>
                                                             { order.status === 'cancel' ? (
