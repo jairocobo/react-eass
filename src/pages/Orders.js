@@ -23,7 +23,16 @@ const App = (props) => {
     const [queryClients, setQueryClients] = useState(null)
     const [queryClient, setQueryClient] = useState(null)
 
-    const openModal = () => setModalShow(true)
+    const [queryDelivers, setQueryDelivers] = useState(null)
+
+    const openModal = () => {
+        fetch(`http://localhost/api/delivers`)
+        .then(res => res.json())
+        .then(data => {
+            setQueryDelivers(data)
+        })
+        setModalShow(true)
+    }
     const closeModal = () => setModalShow(false)
 
     const toOrder = (id) => {
@@ -35,6 +44,7 @@ const App = (props) => {
         const clientId = queryClient
         const text = document.querySelector('#orderText')
         const Direction = document.querySelector('#Direction')
+        const idDeliver = document.querySelector('#idDeliver').value
         let date = new Date()
 
         let day = date.getDate()
@@ -48,7 +58,7 @@ const App = (props) => {
             dateToServer = `${year}-${month}-${day}`
         }
 
-        const data = {idUser: 1, idClient: clientId, idDeliver: 1, text: text.value, status: 'process', dateToServer: dateToServer, direction: Direction.value}
+        const data = {idUser: 1, idClient: clientId, idDeliver: idDeliver, text: text.value, status: 'process', dateToServer: dateToServer, direction: Direction.value}
 
         fetch('http://localhost/api/newOrder',{
             method: "POST",
@@ -133,12 +143,12 @@ const App = (props) => {
         })
         if(id){
             if(id === 'new'){
-                setModalShow(true)
+                openModal()
             }else{
                 fetch(`http://localhost/api/order/${id}`)
                 .then(res => res.json())
                 .then(data => {
-                setOrder(data)
+                    setOrder(data)
                 })
             }
         }
@@ -174,6 +184,22 @@ const App = (props) => {
                 <Form.Group>
                     <Form.Label>Dirección</Form.Label>
                     <Form.Control type="text" placeholder="Calle Luis A. Martinez" id="Direction"/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Selecciona una unidad</Form.Label>
+                    <Form.Control as="select" id="idDeliver">
+                        {
+                            queryDelivers ? (
+                                <>
+                                {
+                                    queryDelivers.map(deliver => (
+                                        <option key={deliver.id} value={deliver.id}>{deliver.name} (Tiene {deliver.orders.length} pedidos)</option>
+                                    ))
+                                }
+                                </>
+                            ):''
+                        }
+                    </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>¿Qué pide?</Form.Label>
@@ -262,9 +288,9 @@ const App = (props) => {
                         <Col>
                             <h3>Unidad</h3>
                             <p>
-                                {order.client ? (
-                                    <Link to={`/clients/${order.client.id}`}>
-                                        <Button variant="outline-secondary">{order.client.name}</Button>
+                                {order.deliver ? (
+                                    <Link to={`/delivers/${order.deliver.id}`}>
+                                        <Button variant="outline-secondary">{order.deliver.name}</Button>
                                     </Link>
                                 ):''}
                             </p>

@@ -1,21 +1,28 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import Cookies from 'universal-cookie'
 
 import '../assets/css/components/Menu.css'
-
-import avatar from '../assets/img/avatar.png'
 
 import { NavLink } from "react-router-dom";
 import { OverlayTrigger,Tooltip } from 'react-bootstrap'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faNewspaper, faAddressCard, faHandRock, faUser, faChartBar } from '@fortawesome/free-regular-svg-icons'
+import { faNewspaper, faAddressCard, faHandRock, faUser, faChartBar, faWindowClose } from '@fortawesome/free-regular-svg-icons'
+
+import UserContext from '../context/UserContext'
 
 const Menu = (props) => {
+    const user = useContext(UserContext)
+    const cookies = new Cookies()
 
+    const doLogout = () => {
+        cookies.remove('uid')
+        window.location="/login"
+    }
     return (
         <nav>
             <div className="Avatar">
-                <img src={avatar} alt="Avatar" />
+                <img src={user.avatar} alt="Avatar" />
             </div>
             <ul className="nav flex-column MenuSub">
                 <OverlayTrigger placement="top" overlay={<Tooltip>Inicio</Tooltip>}>
@@ -34,7 +41,7 @@ const Menu = (props) => {
                     </NavLink>
                 </OverlayTrigger>
                 <OverlayTrigger placement="top" overlay={<Tooltip>Unidades</Tooltip>}>
-                    <NavLink activeClassName="active" to="/motors" className="nav-link">
+                    <NavLink activeClassName="active" to="/delivers" className="nav-link">
                         <FontAwesomeIcon icon={faHandRock} />
                     </NavLink>
                 </OverlayTrigger>
@@ -44,6 +51,13 @@ const Menu = (props) => {
                     </NavLink>
                 </OverlayTrigger>
             </ul>
+            <div className="logoutBtn" onClick={doLogout}>
+                <OverlayTrigger placement="top" overlay={<Tooltip>Salir</Tooltip>}>
+                    <span className="nav-link">
+                        <FontAwesomeIcon icon={faWindowClose} />
+                    </span>
+                </OverlayTrigger>
+            </div>
         </nav>
     )
 }

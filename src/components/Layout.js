@@ -6,13 +6,14 @@ import {Row, Col} from 'react-bootstrap'
 
 import '../assets/css/pages/App.css'
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
+  console.log(props)
   return (
     <Row className="App">
       <Col sm={1} className="Menu">
         <Menu />
       </Col>
-      { children }
+      { props.children }
     </Row>
   )
 }

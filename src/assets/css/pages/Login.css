@@ -1,0 +1,43 @@
+.containerLogin{
+    background: #eb203e;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+.row{
+    margin: 0 !important;
+}
+.login{
+    background: #fff;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login form{
+    width: 80%;
+}
+.logoLeft {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.logoLeft img{
+    width: 200px;
+}
+.jumbotron{
+    background: #fff;
+}
+.line{
+    width: 30%;
+    height: 3px;
+    background: #eb203e;
+    margin-bottom: 1em;
+}
