@@ -212,7 +212,7 @@ const Delivers = (props) => {
                         </>
                     ):(
                         <div className="orderImage">
-                            <img src={image} alt="Imagen" />
+                            {/* <img src={image} alt="Imagen" /> */}
                         </div>
                     )
                 }
