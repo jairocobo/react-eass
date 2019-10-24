@@ -5,12 +5,15 @@ import Layout from '../components/Layout'
 
 
 import Login from '../pages/Login'
+
 import Loading from '../pages/Loading'
+
+import Home from '../pages/Home'
 import Orders from '../pages/Orders'
 import Clients from '../pages/Clients'
 import Delivers from '../pages/Delivers'
 
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
 
 import { UserProvider } from '../context/UserContext'
 
@@ -36,7 +39,8 @@ const App = () => {
             {user ? (
               <Layout>
                 <Switch>
-                  <Route exact path="/" component={Orders} />
+                  <Redirect exact path="/" to='/home' />
+                  <Route exact path="/home" component={Home} />
                   <Route exact path="/orders" component={Orders} />
                   <Route exact path="/orders/:id" component={Orders} />
                   <Route exact path="/clients" component={Clients} />
