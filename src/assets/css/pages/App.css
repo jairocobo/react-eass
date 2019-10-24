@@ -99,6 +99,10 @@ h2{
 }
 .buttonTabs2{
     margin-bottom: 1em;
+    float: right;
+}
+.status-buttons{
+    margin-bottom: 1em;
 }
 
 .mapouter{

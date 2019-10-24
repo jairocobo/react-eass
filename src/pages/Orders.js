@@ -269,6 +269,11 @@ const App = (props) => {
                             ):null
                         }
                     </div>
+                    <div class="btn-group status-buttons" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-secondary">Left</button>
+                        <button type="button" class="btn btn-outline-secondary">Middle</button>
+                        <button type="button" class="btn btn-outline-secondary">Right</button>
+                    </div>
                     <Button variant="danger" className="buttonTabs2" onClick={() => deleteOrder(order.id)}><FontAwesomeIcon icon={faTrashAlt} /> Eliminar</Button>
                     <h3>Dirección</h3>
                     <div className="mapouter">

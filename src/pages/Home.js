@@ -12,7 +12,8 @@ const Home = () => {
     return (
         <>
             <Col sm={8}>
-                <h1>klsandaksldnakslhd asodh akdh askdj h</h1>Holalaksndak daksjd aksjd k
+                <h1>Hola {user.name}</h1>
+                <p>jbasdj kasdbkajsbd </p>
             </Col>
             <Col sm={3} className="message">
                 Aqui
