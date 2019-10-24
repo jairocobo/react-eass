@@ -7,9 +7,10 @@ import avatar from '../assets/img/avatar.png'
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 
-const Menu = () => {
+const Menu = (props) => {
+    console.log(props)
     const setMenu = (id) => {
         if(id){
             document.querySelector('.nav-link.active').classList.remove('active')
@@ -23,19 +24,19 @@ const Menu = () => {
             </div>
             <ul className="nav flex-column MenuSub">
                 <Link to="/" className="nav-link home" onClick={() => setMenu('home')}>
-                    <FontAwesomeIcon icon={faCoffee} /> Inicio
+                    <FontAwesomeIcon icon={faTrashAlt} /> Inicio
                 </Link>
                 <Link to="/orders" className="nav-link orders active" onClick={() => setMenu('orders')}>
-                    <FontAwesomeIcon icon={faCoffee} /> Pedidos
+                    <FontAwesomeIcon icon={faTrashAlt} /> Pedidos
                 </Link>
                 <Link to="/clients" className="nav-link clients" onClick={() => setMenu('clients')}>
-                    <FontAwesomeIcon icon={faCoffee} /> Clientes
+                    <FontAwesomeIcon icon={faTrashAlt} /> Clientes
                 </Link>
                 <Link to="/motors" className="nav-link motors" onClick={() => setMenu('motors')}>
-                    <FontAwesomeIcon icon={faCoffee} /> Unidades
+                    <FontAwesomeIcon icon={faTrashAlt} /> Unidades
                 </Link>
                 <Link to="/finances" className="nav-link finances" onClick={() => setMenu('finances')}>
-                    <FontAwesomeIcon icon={faCoffee} /> Finanzas
+                    <FontAwesomeIcon icon={faTrashAlt} /> Finanzas
                 </Link>
             </ul>
         </nav>
